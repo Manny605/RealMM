@@ -3,10 +3,10 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/MixMart/pages/accueil.php">
-        <div class="sidebar-brand-icon rotate-n-15">
+        <!-- <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">MIXMART</div>
+        </div> -->
+        <div class="sidebar-brand-text mx-3 text-warning">MIXMART</div>
     </a>
 
     <!-- Divider -->

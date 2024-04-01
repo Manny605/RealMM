@@ -13,6 +13,7 @@ $NewArrivals = NewArrivals();
 <html lang="en">
 <head>
     <title>Accueil</title>
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/logo2.jpg">
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
@@ -31,197 +32,200 @@ $NewArrivals = NewArrivals();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
-body{
-    font-family: 'poppins', sans-serif;
-}
+        body{
+            font-family: 'poppins', sans-serif;
+        }
 
-.container-fluid {
-  padding: 0;
-}
+        .container-fluid {
+        padding: 0;
+        }
 
-.header-image {
-    background-image: linear-gradient(to right, #434343 0%, black 100%);
-    width: 100%;
-    max-height: 400px;
-    background-size: cover;
-    background-position: center;
-}
+        .header-image {
+            background-image: linear-gradient(to right, #434343 0%, black 100%);
+            width: 100%;
+            max-height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
 
-.logo-img {
-    width: 50px;
-    height: auto;
-    margin-right: 10px;
-}
+        .logo-img {
+            width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
 
-.navbar-nav .nav-link:hover {
-    color: #ffc107;
-    transition : .3s
-}
+        .navbar-nav .nav-link:hover {
+            color: #ffc107;
+            transition : .3s
+        }
 
-.position-relative {
-    position: relative;
-}
+        .position-relative {
+            position: relative;
+        }
 
-.position-absolute {
-    position: absolute;
-}
+        .position-absolute {
+            position: absolute;
+        }
 
-.top-50 {
-    top: 50%;
-}
+        .top-50 {
+            top: 50%;
+        }
 
-.start-50 {
-    left: 50%;
-}
+        .start-50 {
+            left: 50%;
+        }
 
-.translate-middle {
-    transform: translate(-50%, -50%);
-}
+        .translate-middle {
+            transform: translate(-50%, -50%);
+        }
 
-a,
-a:hover {
-    text-decoration: none;
-    color: inherit;
-}
+        a,
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
 
-.section-products {
-    padding: 80px 0 54px;
-}
+        .section-products {
+            padding: 80px 0 54px;
+        }
 
-.section-products .header {
-    margin-bottom: 50px;
-}
+        .section-products .header {
+            margin-bottom: 50px;
+        }
 
-.section-products .header h3 {
-    font-size: 1rem;
-    color: #fe302f;
-    font-weight: 500;
-}
+        .section-products .header h3 {
+            font-size: 1rem;
+            color: #fe302f;
+            font-weight: 500;
+        }
 
-.section-products .header h2 {
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: #444444; 
-}
+        .section-products .header h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #444444; 
+        }
 
-.section-products .single-product {
-    margin-bottom: 26px;
-}
+        .section-products .single-product {
+            margin-bottom: 26px;
+        }
 
-.section-products .single-product .part-1 {
-    position: relative;
-    height: 290px;
-    max-height: 290px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
+        .section-products .single-product .part-1 {
+            position: relative;
+            height: 290px;
+            max-height: 290px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
 
-.section-products .single-product .part-1::before {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        transition: all 0.3s;
-}
+        .section-products .single-product .part-1::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+                transition: all 0.3s;
+        }
 
-.section-products .single-product:hover .part-1::before {
-        transform: scale(1.2,1.2) rotate(5deg);
-}
+        .section-products .single-product:hover .part-1::before {
+                transform: scale(1.2,1.2) rotate(5deg);
+        }
 
-.section-products #product-1 .part-1::before {
-    background-size: cover;
-        transition: all 0.3s;
-}
+        .section-products #product-1 .part-1::before {
+            background-size: cover;
+            transition: all 0.3s;
+        }
 
-.section-products .single-product .part-1 .discount,
-.section-products .single-product .part-1 .new {
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    color: #ffffff;
-    background-color: #fe302f;
-    padding: 2px 8px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
+        .section-products .single-product .part-1 .discount,
+        .section-products .single-product .part-1 .new {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #ffffff;
+            background-color: #fe302f;
+            padding: 2px 8px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
 
-.section-products .single-product .part-1 .new {
-    left: 0;
-    background-color: #444444;
-}
+        .section-products .single-product .part-1 .new {
+            left: 0;
+            background-color: #444444;
+        }
 
-.section-products .single-product .part-1 ul {
-    position: absolute;
-    bottom: -41px;
-    left: 20px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    opacity: 0;
-    transition: bottom 0.5s, opacity 0.5s;
-}
+        .section-products .single-product .part-1 ul {
+            position: absolute;
+            bottom: -41px;
+            left: 20px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            opacity: 0;
+            transition: bottom 0.5s, opacity 0.5s;
+        }
 
-.section-products .single-product:hover .part-1 ul {
-    bottom: 30px;
-    opacity: 1;
-}
+        .section-products .single-product:hover .part-1 ul {
+            bottom: 30px;
+            opacity: 1;
+        }
 
-.section-products .single-product .part-1 ul li {
-    display: inline-block;
-    margin-right: 4px;
-}
+        .section-products .single-product .part-1 ul li {
+            display: inline-block;
+            margin-right: 4px;
+        }
 
-.section-products .single-product .part-1 ul li a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background-color: #ffffff;
-    color: #444444;
-    text-align: center;
-    box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
-    transition: color 0.2s;
-}
+        .section-products .single-product .part-1 ul li a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ffffff;
+            color: #444444;
+            text-align: center;
+            box-shadow: 0 2px 20px rgb(50 50 50 / 10%);
+            transition: color 0.2s;
+        }
 
-.section-products .single-product .part-1 ul li a:hover {
-    color: #fe302f;
-}
+        .section-products .single-product .part-1 ul li a:hover {
+            color: #fe302f;
+        }
 
-.section-products .single-product .part-2 .product-title {
-    font-size: 1rem;
-}
+        .section-products .single-product .part-2 .product-title {
+            font-size: 1rem;
+        }
 
-.section-products .single-product .part-2 h4 {
-    display: inline-block;
-    font-size: 1rem;
-}
+        .section-products .single-product .part-2 h4 {
+            display: inline-block;
+            font-size: 1rem;
+        }
 
-.section-products .single-product .part-2 .product-old-price {
-    position: relative;
-    padding: 0 7px;
-    margin-right: 2px;
-    opacity: 0.6;
-}
+        .section-products .single-product .part-2 .product-old-price {
+            position: relative;
+            padding: 0 7px;
+            margin-right: 2px;
+            opacity: 0.6;
+        }
 
-.section-products .single-product .part-2 .product-old-price::after {
-    position: absolute;
-    content: "";
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #444444;
-    transform: translateY(-50%);
-}
+        .section-products .single-product .part-2 .product-old-price::after {
+            position: absolute;
+            content: "";
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #444444;
+            transform: translateY(-50%);
+        }
 
-</style>
+    </style>
 
 </head>
 
@@ -253,7 +257,7 @@ a:hover {
                     </div>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="card h-100">
+                    <div class="card border-1 h-100">
                         <div class="card-body d-flex align-items-center">
                             <div class="mr-3">
                                 <i class="fas fa-money-bill-wave fa-2x text-sucess"></i>
@@ -284,102 +288,94 @@ a:hover {
 
         <div class="container-fluid my-5">
             <div class="container">
-                <p class="display-4 text-center">Découvrez nos dernières <span class="text-warning">collections</span></p>
+                <p class="display-4 text-center">Découvrez nos <span class="text-warning">produits</span></p>
                 <hr>
             </div>
         </div>
 
 
         <section class="section-products py-5">
-    <div class="container">
-        <?php $currentCategory = ''; ?>
-        <div class="row g-4">
-            <?php foreach($NewArrivals as $newProduct) : ?>
-                <?php if ($newProduct['Nom_categorie'] != $currentCategory) : ?>
-                    <?php $currentCategory = $newProduct['Nom_categorie']; ?>
-                    <div class="col-12">
-                        <h2 class="category-label"><?php echo $currentCategory; ?></h2>
-                    </div>
-                <?php endif; ?>
-                <div class="col-md-3">
-                    <div id="product-<?php echo $newProduct['ID_produit']; ?>" class="single-product card border-0">
-                        <div class="part-1 card-img-top m-0 position-relative">
-                            <img src="../admin/pages/produits/<?php echo $newProduct['Image']; ?>" class="img-fluid d-block mx-auto" alt="Product Image" style="height: 200px;">
-                            <div class="overlay d-flex justify-content-center align-items-center">
-                                <ul class="list-unstyled">
-                                    <li><a href="#" class="text-dark"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#" class="text-dark"><i class="fas fa-search-plus"></i></a></li>
-                                </ul>
+            <div class="container">
+                <form action="traitement_panier.php" method="POST">
+                    <?php $currentCategory = ''; ?>
+                    <div class="row g-4">
+                        <?php foreach($NewArrivals as $newProduct) : ?>
+                            <?php if ($newProduct['Nom_categorie'] != $currentCategory) : ?>
+                                <?php $currentCategory = $newProduct['Nom_categorie']; ?>
+                                <div class="col-12 mb-4">
+                                    <a href="tous_articles_categorie.php?idc=<?php echo $newProduct['categorie_id']; ?>" class="h2 category-label text-warning"><?php echo $currentCategory; ?></a>
+                                </div>
+                            <?php endif; ?>
+                            <div class="col-md-3">
+                                <div id="product-<?php echo $newProduct['ID_produit']; ?>" class="single-product card border-0">
+                                    <div class="part-1 card-img-top m-0 position-relative">
+                                        <a href="details_produit.php?idp=<?php echo $newProduct['ID_produit']; ?>">
+                                            <img src="../admin/pages/produits/<?php echo $newProduct['Image']; ?>" class="img-fluid d-block mx-auto" alt="Product Image" style="height: 200px;">
+                                        </a>
+                                        <input type="hidden" name="categorie_id" value="<?php echo $newProduct['categorie_id']; ?>">
+                                        <input type="hidden" name="quantite" value="1">
+                                        <div class="overlay d-flex justify-content-center align-items-center">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <button type="submit" name="product_id" value="<?php echo $newProduct['ID_produit']; ?>" class="btn btn-link text-dark">
+                                                        <i class="fas fa-shopping-cart"></i>
+                                                    </button>
+                                                </li>
+                                                <li><a href="details_produit.php?idp=<?php echo $newProduct['ID_produit']; ?>" class="text-dark"><i class="fas fa-search-plus"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="part-2 card-body">
+                                        <h3 class="product-title card-title"><?php echo $newProduct['Nom']; ?></h3>
+                                        <h4 class="product-price card-subtitle"><?php echo $newProduct['Prix']; ?> MRU</h4>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="part-2 card-body">
-                            <h3 class="product-title card-title"><?php echo $newProduct['Nom']; ?></h3>
-                            <h4 class="product-price card-subtitle"><?php echo $newProduct['Prix']; ?> MRU</h4>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-</section>
+                </form>
+            </div>
+        </section>
 
 
+    <?php include '../components/footer.php'; ?>
 
 
+    <?php if(isset($_GET['success']) && $_GET['success'] === 'ok'): ?>
+        <script>
+            Swal.fire({
+                title: "",
+                text: "Votre commande a été traitée avec succès !",
+                icon: "success"
+            }).then((result) => {
+                window.location.href = window.location.origin + window.location.pathname;
+            });
+        </script>
+    <?php endif; ?>
 
 
-<!-- <div class="container my-4">
-    <div class="row">
+    <script>
+        <?php if (isset($_GET['add'])) : ?>
+            Swal.fire({
+                text: 'Produit ajouté',
+                icon: 'success',
+                timer: 2000
+            }).then((result) => {
+                window.history.replaceState({}, document.title, window.location.href.split('&')[0]);
+            });
+        <?php endif; ?>
 
-        <div class="col-md-4">
-            <a href="#" class="card bg-dark text-white mb-4">
-                <img class="card-img" src="../assets/legumes.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <h2 class="card-title">Legumes</h2>
-                </div>
-            </a>
-        </div>
+        <?php if (isset($_GET['alreadyAdd'])) : ?>
+            Swal.fire({
+                text: 'Produit déjà ajouté',
+                icon: '',
+                timer: 2000
+            }).then((result) => {
+                window.history.replaceState({}, document.title, window.location.href.split('&')[0]);
+            });
+        <?php endif; ?>
+    </script>
 
-        <div class="col-md-4">
-            <a href="#" class="card bg-dark text-white mb-4">
-                <img class="card-img" src="../assets/chinese.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <h2 class="card-title">Chinese</h5>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4">
-            <a href="#" class="card bg-dark text-white mb-4">
-                <img class="card-img" src="../assets/clothes.jpeg" alt="Card image">
-                <div class="card-img-overlay">
-                    <h2 class="card-title">Vetements</h5>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4">
-            <a href="#" class="card bg-dark text-white mb-4">
-                <img class="card-img" src="../assets/babywear.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <h2 class="card-title">Vetements de bebe</h5>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4">
-            <a href="#" class="card bg-dark text-white mb-4">
-                <img class="card-img" src="../assets/SkinCare.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <h2 class="card-title">SkinCare</h5>
-                </div>
-            </a>
-        </div>
-
-    </div>
-</div> -->
-
-<?php include '../components/footer.php'; ?>
 
     <script
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

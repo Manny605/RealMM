@@ -1,4 +1,4 @@
-<div class="container-fluid col-md-12">
+<div class="container-fluid col-md-12 p-0">
   <!-- Footer -->
   <footer
           class="text-center text-lg-start text-white bg-dark"

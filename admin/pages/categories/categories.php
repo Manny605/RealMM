@@ -3,7 +3,7 @@
 session_start();
 
 if(!isset($_SESSION['ID_utilisateur'])){
-    header('Location: ../../../auth/login.php');
+    header('Location: /MixMart/auth/login.php');
 }
 
 $Nom_complet = $_SESSION['Prenom'] . ' ' . $_SESSION['Nom'];

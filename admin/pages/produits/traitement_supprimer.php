@@ -11,7 +11,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
     try {
         // Requête SQL sécurisée pour supprimer l'article
-        $sql = "DELETE FROM produit WHERE ID_Produit = :id";
+        $sql = "DELETE FROM produit WHERE ID_produit = :id";
         $stmt = $connect->prepare($sql);
         $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
