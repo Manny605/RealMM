@@ -25,6 +25,9 @@ $allCategories = getAllCategories();
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
+
+
     <title>Admin : Gérer les categories</title>
 
     <!-- Custom fonts for this template -->
@@ -63,7 +66,7 @@ $allCategories = getAllCategories();
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-between mb-4">
                         <div class="col">
-                            <h1 class="h3 text-gray-800">Liste des produits</h1>
+                            <h1 class="h3 text-gray-800">Liste des categories</h1>
                         </div>
                         <div class="col-auto">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
@@ -256,13 +259,15 @@ $allCategories = getAllCategories();
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>  
                         </div>
                         <div class="modal-body">
                             Êtes-vous sûr de vouloir supprimer cette categorie ?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             <a href="traitement_supprimer.php?id=<?php echo $categorie['ID_categorie']; ?>" class="btn btn-danger">Supprimer</a>
                         </div>
                     </div>

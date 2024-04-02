@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['ID_utilisateur'])) {
+    header('Location: /MixMart/auth/login.php');
+    exit();
+}
+
+
 if(isset($_POST['id_produit'], $_POST['nom'], $_POST['description'], $_POST['prix'], $_POST['stock'], $_POST['categorie'])) {
     $id = $_POST['id_produit'];
     $nom = $_POST['nom'];

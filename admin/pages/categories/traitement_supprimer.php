@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['ID_utilisateur'])) {
+    header('Location: /MixMart/auth/login.php');
+    exit();
+}
+
+
 // Vérification de la présence de l'ID de l'article dans l'URL
 if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET['id'];

@@ -13,7 +13,7 @@ $NewArrivals = NewArrivals();
 <html lang="en">
 <head>
     <title>Accueil</title>
-    <link rel="icon" type="image/x-icon" href="/MixMart/assets/logo2.jpg">
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta

@@ -26,6 +26,8 @@ $categories = getAllCategories();
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
+
     <title>Admin : Les produits</title>
 
     <!-- Custom fonts for this template -->

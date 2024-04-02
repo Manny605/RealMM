@@ -31,6 +31,9 @@ $paiement = DetailsPaiement($commande_id);
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
+
+
     <title>Commande &#8470 <?php echo $commande_id ?></title>
 
     <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -87,7 +90,6 @@ $paiement = DetailsPaiement($commande_id);
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -95,98 +97,87 @@ $paiement = DetailsPaiement($commande_id);
                         </div>
                         <div class="row m-2">
                             <div class="col-lg-12 col-sm-12 p-4">
-                                <!-- Details -->
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <div class="mb-3 d-flex justify-content-between">
-                                            <div>
-                                                <span class="me-3"><?php echo $paiement['DateCommande']; ?></span>
+                                <form action="valide_commande.php" method="POST">
+                                    <!-- Details -->
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="mb-3 d-flex justify-content-between">
+                                                <div>
+                                                    <span class="me-3"><?php echo $paiement['DateCommande']; ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <table class="table table-borderless">
-                                        <tbody>
-
-                                        <?php 
-                                        $total = 0;
-                                        foreach($details as $product) : 
-                                            $subtotal = $product['Quantite'] * $product['PrixUnitaire'];
-                                            $total += $subtotal;
-                                        ?>
-                                            <tr>
-                                                <td>
-                                                    <div class="d-flex mb-2">
-                                                        <div class="flex-shrink-0">
-                                                            <img src="../produits/<?php echo $product['Image'] ;?>" alt="" width="35" class="img-fluid">
-                                                        </div>
-                                                        <div class="d-flex flex-column ms-4">
-                                                            <h6 class="small mb-0"><a href="#" class="text-reset"><?php echo $product['Nom'] ?></a></h6>
-                                                            <span class="small text-warning"><?php echo $product['Nom_categorie'] ?></span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td><?php echo $product['Quantite'] ?></td>
-                                                <td class="text-end"><?php echo $product['PrixUnitaire']; ?> MRU</td>
-                                            </tr>
-                                        <?php endforeach; ?>
-
-
-                                        </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <td colspan="2">Subtotal</td>
-                                            <td class="text-end"><?php echo $total; ?> MRU</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Livraison</td>
-                                            <td class="text-end">00.00 MRU</td>
-                                        </tr>
-                                        <tr class="fw-bold">
-                                            <td colspan="2">TOTAL</td>
-                                            <td class="text-end"><?php echo $total; ?> MRU</td>
-                                        </tr>
-                                        </tfoot>
-                                    </table>
-                                    </div>
-                                </div>
-
-                                <!-- Payment -->
-                                <div class="row">
-
-                                    <div class="col-lg-8">
-                                        <div class="card mb-4">
-                                            <div class="card-body">
-                                                <h3 class="h6">Paiement</h3>
-                                                <p>Nom du payeur: <?php echo $paiement['NomCompletPaiement']; ?></br>
-                                                Telephone du payeur: <?php echo $paiement['TelephonePaiement']; ?></p>
-                                            </div>
+                                            <table class="table table-borderless">
+                                                <tbody>
+                                                    <?php 
+                                                    $total = 0;
+                                                    foreach($details as $product) : 
+                                                        $subtotal = $product['Quantite'] * $product['PrixUnitaire'];
+                                                        $total += $subtotal;
+                                                    ?>
+                                                    <tr>
+                                                        <td>
+                                                            <div class="d-flex mb-2">
+                                                                <div class="flex-shrink-0">
+                                                                    <img src="../produits/<?php echo $product['Image'] ;?>" alt="" width="35" class="img-fluid">
+                                                                </div>
+                                                                <div class="d-flex flex-column ms-4">
+                                                                    <h6 class="small mb-0"><a href="#" class="text-reset"><?php echo $product['Nom'] ?></a></h6>
+                                                                    <span class="small text-warning"><?php echo $product['Nom_categorie'] ?></span>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td><?php echo $product['Quantite'] ?></td>
+                                                        <td class="text-end"><?php echo $product['PrixUnitaire']; ?> MRU</td>
+                                                    </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr>
+                                                        <td colspan="2">Subtotal</td>
+                                                        <td class="text-end"><?php echo $total; ?> MRU</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">Livraison</td>
+                                                        <td class="text-end">00.00 MRU</td>
+                                                    </tr>
+                                                    <tr class="fw-bold">
+                                                        <td colspan="2">TOTAL</td>
+                                                        <td class="text-end"><?php echo $total; ?> MRU</td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-lg-4">
-                                        <div class="card mb-4">
-                                            <div class="card-body text-center">
+                                    <!-- Payment -->
+                                    <div class="row">
+                                        <div class="col-lg-8">
+                                            <div class="card mb-4">
+                                                <div class="card-body">
+                                                    <h3 class="h6">Paiement</h3>
+                                                    <p>Nom du payeur: <?php echo $paiement['NomCompletPaiement']; ?></br>
+                                                    Telephone du payeur: <?php echo $paiement['TelephonePaiement']; ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card mb-4">
+                                                <div class="card-body text-center">
                                                     <a href="#" onClick="ShowImage()">
                                                         <img src="../../../pages/screenshots/<?php echo $paiement['ScreenshotPaiement']; ?>" alt="" style="max-height:200px; max-width:60px;">
                                                     </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                </div>
-
-                                <a href="valide_commande.php" class="btn btn-success w-100 rounded-0">Valider la commande</a>
-
+                                    <input type="hidden" name="commande_id" value="<?php echo $commande_id; ?>">
+                                    <button type="submit" class="btn btn-success w-100 rounded-0">Valider la commande</button>
+                                </form>
                             </div>
-
-                            
                         </div>
                     </div>
-
-                    
-
-
                 </div>
                 <!-- /.container-fluid -->
+
 
             </div>
             <!-- End of Main Content -->
@@ -228,3 +219,8 @@ $paiement = DetailsPaiement($commande_id);
 </body>
 
 </html>
+
+
+
+<!-- 
+#10136D -->

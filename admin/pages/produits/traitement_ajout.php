@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['ID_utilisateur'])) {
+    header('Location: /MixMart/auth/login.php');
+    exit();
+}
+
+
 // Inclusion du fichier de fonctions
 include '../../../constants/functions.php';
 

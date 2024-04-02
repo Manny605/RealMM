@@ -328,13 +328,33 @@ function getAllCategories() {
     return $allCategories;
 }
 
-function getAllCommandes(){
+function getAllCommandesEnAttente(){
     $connect = connect();
     
     $sql = "SELECT commande.*, produit.Nom, CONCAT(utilisateur.Prenom, ' ', utilisateur.Nom) AS Client, COUNT(detailcommande.ID_detail_commande) AS nbr_produits FROM commande
     INNER JOIN detailcommande ON detailcommande.ID_commande = commande.ID_commande
     INNER JOIN produit ON produit.ID_produit = detailcommande.ID_produit
     INNER JOIN utilisateur ON utilisateur.ID_utilisateur = commande.utilisateur_id
+    WHERE commande.StatutCommande = 'En attente'
+    ORDER BY DateCommande DESC";
+    
+    $stmt = $connect->query($sql);
+    
+    $allCommandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    $connect = null;
+    
+    return $allCommandes;
+}
+
+function getAllCommandesValidee(){
+    $connect = connect();
+    
+    $sql = "SELECT commande.*, produit.Nom, CONCAT(utilisateur.Prenom, ' ', utilisateur.Nom) AS Client, COUNT(detailcommande.ID_detail_commande) AS nbr_produits FROM commande
+    INNER JOIN detailcommande ON detailcommande.ID_commande = commande.ID_commande
+    INNER JOIN produit ON produit.ID_produit = detailcommande.ID_produit
+    INNER JOIN utilisateur ON utilisateur.ID_utilisateur = commande.utilisateur_id
+    WHERE commande.StatutCommande = 'validee'
     ORDER BY DateCommande DESC";
     
     $stmt = $connect->query($sql);
@@ -530,6 +550,35 @@ function updateQuantityInDatabase($product_id, $new_quantity) {
         echo "Erreur de mise à jour du panier: " . $e->getMessage();
         return false;
     }
+}
+
+function validerCommande($commande_id) {
+
+    $connect = connect();
+
+    // Préparer la requête SQL pour mettre à jour le statut de la commande
+    $sql = "UPDATE commande SET StatutCommande = 'validee' WHERE ID_commande = :commande_id";
+
+    try {
+        // Préparer la requête
+        $stmt = $connect->prepare($sql);
+        
+        // Lié le paramètre de l'identifiant de la commande
+        $stmt->bindParam(':commande_id', $commande_id, PDO::PARAM_INT);
+        
+        // Exécuter la requête
+        $stmt->execute();
+
+        // Retourner true si la mise à jour a réussi
+        return true;
+    } catch(PDOException $e) {
+        // En cas d'erreur lors de l'exécution de la requête, afficher l'erreur et retourner false
+        echo "Error updating record: " . $e->getMessage();
+        return false;
+    }
+
+    // Fermer la connexion à la base de données
+    $connect = null;
 }
 
 

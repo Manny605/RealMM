@@ -17,7 +17,7 @@ if(isset($_GET['idc'])) {
 <html lang="en">
 <head>
     <title><?php echo isset($produitsByCategorie) && !empty($produitsByCategorie) ? $produitsByCategorie[0]['Nom_categorie'] : "Tous les produits"; ?></title>
-    <link rel="icon" type="image/x-icon" href="/MixMart/assets/logo2.jpg">
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
 
     <!-- Required meta tags -->
     <meta charset="utf-8" />

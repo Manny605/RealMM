@@ -23,7 +23,7 @@ $Nom_complet = $_SESSION['Prenom']. ' ' . $_SESSION['Nom'];
     <meta name="author" content="">
 
     <title>Admin : Tableau de bord</title>
-    <link rel="icon" type="image/x-icon" href="/MixMart/assets/logo2.jpg">
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
 
 
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

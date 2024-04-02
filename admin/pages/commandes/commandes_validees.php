@@ -11,7 +11,7 @@ require_once '../../../constants/functions.php';
 
 $Nom_complet = $_SESSION['Prenom']. ' ' . $_SESSION['Nom'];
 
-$allCommandes = getAllCommandesEnAttente();
+$allCommandes = getAllCommandesValidee();
 
 ?>
 
@@ -26,7 +26,7 @@ $allCommandes = getAllCommandesEnAttente();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin : Gestion des commandes</title>
+    <title>Admin : Liste des commandes validees</title>
 
     <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
 
@@ -79,7 +79,6 @@ $allCommandes = getAllCommandesEnAttente();
                                                     <th>Capture d'écran</th>
                                                     <th>Date-commande</th>
                                                     <th>Etat</th>
-                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -94,13 +93,6 @@ $allCommandes = getAllCommandesEnAttente();
                                                         </td>
                                                         <td><?php echo $commande['DateCommande'] ?></td>
                                                         <td><?php echo $commande['StatutCommande'] ?></td>
-                                                        <td class="d-flex justify-content-around">
-                                                            <?php if (!empty($commande['Client'])): ?>
-                                                                <a href="details_commande.php?idd=<?php echo $commande['ID_commande']; ?>" class="text-info edit-btn">
-                                                                    <i class="fa-solid fa-eye"></i>                                                    
-                                                                </a>
-                                                            <?php endif; ?>
-                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>
@@ -138,15 +130,6 @@ $allCommandes = getAllCommandesEnAttente();
     <script src="../../vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="../../js/demo/datatables-demo.js"></script>
 
-    <?php if (isset($_GET['commande']) && $_GET['commande'] == "valide") : ?>
-       <script>
-            Swal.fire({
-                    title: "Validation",
-                    text: "La commande a bien été validée",
-                    icon: "success"
-            });
-       </script>
-    <?php endif; ?>
 
 
 </body>

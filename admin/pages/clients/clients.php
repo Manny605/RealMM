@@ -27,6 +27,8 @@ $allClients = getAllClients();
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link rel="icon" type="image/x-icon" href="/MixMart/assets/MixMart.png">
+
     <title>Admin : Gestion des clients</title>
 
     <!-- Custom fonts for this template -->
@@ -64,12 +66,23 @@ $allClients = getAllClients();
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Liste des clients</h1>
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-between mb-4">
+                            <div class="col">
+                                <h1 class="h3 text-gray-800">Liste des clients</h1>
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">
+                                    <i class="fas fa-plus"></i> Ajouter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                     <?php
                     if (isset($_GET['success_ajout']) && $_GET['success_ajout'] == "ok") {
                         echo '<div class="alert alert-success" role="alert">
-                                    La commande a été Validé avec succès.
+                                    La creation du compte a été Validée avec succès.
                             </div>';
                     } elseif (isset($_GET['error_ajout'])) {
                         echo '<div class="alert alert-danger" role="alert">';
@@ -79,7 +92,7 @@ $allClients = getAllClients();
 
                     if (isset($_GET['success_modif']) && $_GET['success_modif'] == "ok") {
                         echo '<div class="alert alert-success" role="alert">
-                                    La commande a été mis à jour avec succès.
+                                    Le compte du client a été mis à jour avec succès.
                             </div>';
                     } elseif (isset($_GET['error_modif'])) {
                         echo '<div class="alert alert-danger" role="alert">';
@@ -89,7 +102,7 @@ $allClients = getAllClients();
 
                     if (isset($_GET['success_supp']) && $_GET['success_supp'] == "ok") {
                         echo '<div class="alert alert-success" role="alert">
-                                    La commande a été supprimé avec succès.
+                                    Le compte du client a été supprimé avec succès.
                             </div>';
                     } elseif (isset($_GET['error_supp'])) {
                         echo '<div class="alert alert-danger" role="alert">';
@@ -153,9 +166,124 @@ $allClients = getAllClients();
             </div>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Ajouter un client</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for editing content -->
+                        <form action="traitement_ajout.php" method="POST" id="editForm">
 
-            <!-- End of Footer -->
+                            <div class="form-group">
+                                <label for="content">Prenom</label>
+                                <input type="text" class="form-control" id="content" name="prenom" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Nom</label>
+                                <input type="text" class="form-control" id="content" name="nom" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="content" name="nom_utilisateur" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Telephone</label>
+                                <input type="text" class="form-control" id="content" name="phone" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Mot de passe</label>
+                                <input type="text" class="form-control" id="content" name="mdp" value="">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="Addmodal">Fermer</button>
+                                <button type="submit" class="btn btn-primary" id="saveChanges">Enregistrer</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Edit Modal -->
+        <?php foreach($allClients as $client) : ?>
+        <div class="modal fade" id="editModal<?php echo $client['ID_utilisateur']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModalLabel<?php echo $client['ID_utilisateur']; ?>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Modifier le client</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for editing content -->
+                        <form action="traitement_modifier.php" method="POST" id="editForm">
+                            
+                            <input type="hidden" id="id_utilisateur" name="id_utilisateur" value="<?php echo $client['ID_utilisateur']; ?>">
+                            
+                            <div class="form-group">
+                                <label for="content">Prenom</label>
+                                <input type="text" class="form-control" id="content" name="prenom" value="<?php echo $client['Prenom']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Nom</label>
+                                <input type="text" class="form-control" id="content" name="nom" value="<?php echo $client['Nom']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="content" name="nom_utilisateur" value="<?php echo $client['Nom_utilisateur']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Telephone</label>
+                                <input type="text" class="form-control" id="content" name="phone" value="<?php echo $client['Phone']; ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="content">Mot de passe</label>
+                                <input type="text" class="form-control" id="content" name="mdp" value="<?php echo $client['MotDePasse']; ?>">
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="Editmodal">Fermer</button>
+                                <button type="submit" class="btn btn-primary" id="saveChanges">Enregistrer</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+
+        <!--Delete Modal -->
+        <?php foreach($allClients as $client) : ?>
+            <div class="modal fade" id="deleteModal<?php echo $client['ID_utilisateur']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel<?php echo $client['ID_utilisateur']; ?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Supprimer</h1>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>                        
+                        </div>
+                        <div class="modal-body">
+                            Êtes-vous sûr de vouloir supprimer ce client ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            <a href="traitement_supprimer.php?id=<?php echo $client['ID_utilisateur']; ?>" class="btn btn-danger">Supprimer</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
 
         </div>
         <!-- End of Content Wrapper -->
